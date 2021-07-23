@@ -6,7 +6,13 @@ function App() {
   const facebookLogin = () => {
     // フェイスブックログイン処理
     const provider = new firebase.auth.FacebookAuthProvider();
-    firebase.auth().signInWithRedirect(provider);
+    firebase
+      .auth()
+      .signInWithRedirect(provider)
+      .then((result) => {
+        var user = result.user;
+        console.log(user);
+      });
   };
   const facebookLogout = () => {
     firebase.auth().signOut();
