@@ -25,6 +25,19 @@ function App() {
   const facebookLogout = () => {
     firebase.auth().signOut();
   };
+
+  const checkLoginStatus = () => {
+    firebase.auth.getRedirectResult().then(
+      function (result) {
+        // The firebase.User instance:
+        var user = result.user;
+        console.log(user);
+      },
+      function (error) {
+        console.log(error);
+      }
+    );
+  };
   return (
     <div className="App">
       <FacebookLoginButton
@@ -36,6 +49,7 @@ function App() {
         <span style={{ fontSize: 16 }}>Facebookでログイン</span>
       </FacebookLoginButton>
       <button onClick={facebookLogout}>log out</button>
+      <button onClick={checkLoginStatus}>ログイン状態を確認</button>
     </div>
   );
 }
