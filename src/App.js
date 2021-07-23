@@ -1,10 +1,5 @@
-import logo from "./logo.svg";
 import "./App.css";
-import {
-  FacebookLoginButton,
-  GoogleLoginButton,
-  TwitterLoginButton,
-} from "react-social-login-buttons";
+import { FacebookLoginButton } from "react-social-login-buttons";
 import firebase from "./firebase";
 
 function App() {
