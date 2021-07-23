@@ -8,6 +8,9 @@ function App() {
     const provider = new firebase.auth.FacebookAuthProvider();
     firebase.auth().signInWithRedirect(provider);
   };
+  const facebookLogout = () => {
+    firebase.auth().signOut();
+  };
   return (
     <div className="App">
       <FacebookLoginButton
@@ -18,6 +21,7 @@ function App() {
       >
         <span style={{ fontSize: 16 }}>Facebookでログイン</span>
       </FacebookLoginButton>
+      <button onClick={facebookLogout}>log out</button>
     </div>
   );
 }
