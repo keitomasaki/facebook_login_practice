@@ -35,7 +35,7 @@ function App() {
     });
   };
 
-  useEffect(() => {
+  useEffect(async () => {
     console.log("---------useEffect");
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -46,6 +46,7 @@ function App() {
       }
       console.log("---------useEffect after");
     });
+    console.log("---------useEffect after22222");
   }, []);
 
   return (
