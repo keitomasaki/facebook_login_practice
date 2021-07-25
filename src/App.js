@@ -1,4 +1,5 @@
 import "./App.css";
+import React, { useEffect } from "react";
 import { FacebookLoginButton } from "react-social-login-buttons";
 import firebase from "./firebase";
 
@@ -10,10 +11,6 @@ function App() {
       .auth()
       .signInWithPopup(provider)
       .then((result) => {
-        /** @type {firebase.auth.OAuthCredential} */
-        // var credential = result.credential;
-
-        // The signed-in user info.
         var user = result.user;
         console.log(user);
         console.log("facebook login ");
@@ -29,18 +26,25 @@ function App() {
   const checkLoginUser = () => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
         var uid = user.uid;
         console.log(uid);
         console.log(user);
         // ...
       } else {
-        // User is signed out
-        // ...
       }
     });
   };
+
+  useEffect(() => {
+    console.log("---------useEffect");
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        const { uid, displayName } = user;
+        console.log(uid);
+        console.log(displayName);
+      }
+    });
+  }, []);
 
   return (
     <div className="App">
