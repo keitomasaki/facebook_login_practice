@@ -42,7 +42,9 @@ function App() {
         const { uid, displayName } = user;
         console.log(uid);
         console.log(displayName);
+        return null;
       }
+      console.log("---------useEffect after");
     });
   }, []);
 
