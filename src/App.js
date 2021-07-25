@@ -26,6 +26,21 @@ function App() {
     firebase.auth().signOut();
   };
 
+  const checkLoginUser = () => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        var uid = user.uid;
+        console.log(uid);
+        // ...
+      } else {
+        // User is signed out
+        // ...
+      }
+    });
+  };
+
   const checkLoginStatus = () => {
     firebase.auth.getRedirectResult().then(
       function (result) {
@@ -50,6 +65,7 @@ function App() {
       </FacebookLoginButton>
       <button onClick={facebookLogout}>log out</button>
       <button onClick={checkLoginStatus}>ログイン状態を確認</button>
+      <button onClick={checkLoginUser}>ユーザを確認</button>
     </div>
   );
 }
