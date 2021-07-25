@@ -8,7 +8,7 @@ function App() {
     const provider = new firebase.auth.FacebookAuthProvider();
     firebase
       .auth()
-      .signInWithRedirect(provider)
+      .signInWithPopup(provider)
       .then((result) => {
         /** @type {firebase.auth.OAuthCredential} */
         // var credential = result.credential;
@@ -33,6 +33,7 @@ function App() {
         // https://firebase.google.com/docs/reference/js/firebase.User
         var uid = user.uid;
         console.log(uid);
+        console.log(user);
         // ...
       } else {
         // User is signed out
@@ -41,18 +42,6 @@ function App() {
     });
   };
 
-  const checkLoginStatus = () => {
-    firebase.auth.getRedirectResult().then(
-      function (result) {
-        // The firebase.User instance:
-        var user = result.user;
-        console.log(user);
-      },
-      function (error) {
-        console.log(error);
-      }
-    );
-  };
   return (
     <div className="App">
       <FacebookLoginButton
@@ -64,7 +53,6 @@ function App() {
         <span style={{ fontSize: 16 }}>Facebookでログイン</span>
       </FacebookLoginButton>
       <button onClick={facebookLogout}>log out</button>
-      <button onClick={checkLoginStatus}>ログイン状態を確認</button>
       <button onClick={checkLoginUser}>ユーザを確認</button>
     </div>
   );
