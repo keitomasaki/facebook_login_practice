@@ -35,18 +35,39 @@ function App() {
     });
   };
 
-  useEffect(() => {
-    console.log("---------useEffect");
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        const { uid, displayName } = user;
-        console.log(uid);
-        console.log(displayName);
-        return null;
-      }
-      console.log("---------useEffect after");
+  const initFirebaseAuth = () => {
+    return new Promise((resolve) => {
+      firebase.auth().onAuthStateChanged((user) => {
+        // user オブジェクトを resolve
+        resolve(user);
+        console.log("unsubscribe");
+        // 登録解除
+        // unsubscribe();
+      });
     });
-    console.log("---------useEffect after22222");
+  };
+
+  useEffect(() => {
+    async function getUserData() {
+      const user = await initFirebaseAuth();
+      // ログインしていれば中通る
+      if (user) {
+        console.log(user); // ユーザー情報が表示される
+      }
+      console.log("---------useEffect");
+      await firebase.auth().onAuthStateChanged(async (user) => {
+        if (user) {
+          const { uid, displayName } = user;
+          console.log(uid);
+          console.log(displayName);
+          return null;
+        }
+        console.log("---------useEffect after");
+      });
+
+      console.log("---------useEffect after22222");
+    }
+    getUserData();
   }, []);
 
   return (
