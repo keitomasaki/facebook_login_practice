@@ -44,9 +44,9 @@ function App() {
         console.log(displayName);
         return null;
       }
-      // console.log("---------useEffect after");
+      console.log("---------useEffect after");
     });
-    // console.log("---------useEffect after22222");
+    console.log("---------useEffect after22222");
   }, []);
 
   return (
