@@ -11,7 +11,7 @@ function App() {
     // provider.addScope("user_birthday");
     provider.addScope("user_friends");
     provider.addScope("pages_show_list");
-    // provider.addScope("instagram_basic");
+    provider.addScope("instagram_basic");
     firebase
       .auth()
       .signInWithPopup(provider)
