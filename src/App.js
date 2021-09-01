@@ -7,7 +7,7 @@ function App() {
   const facebookLogin = () => {
     // フェイスブックログイン処理
     const provider = new firebase.auth.FacebookAuthProvider();
-    provider.addScope("instagram_basic");
+    provider.addScope("email");
     firebase
       .auth()
       .signInWithPopup(provider)
