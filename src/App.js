@@ -8,13 +8,17 @@ function App() {
     // フェイスブックログイン処理
     const provider = new firebase.auth.FacebookAuthProvider();
     provider.addScope("email");
+    provider.addScope("instagram_basic");
     provider.addScope("pages_show_list");
     firebase
       .auth()
       .signInWithPopup(provider)
       .then((result) => {
         var user = result.user;
+        console.log("user");
         console.log(user);
+        console.log("result");
+        console.log(result);
         console.log("facebook login ");
       })
       .catch((error) => {
