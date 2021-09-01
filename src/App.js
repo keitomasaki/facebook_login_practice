@@ -7,9 +7,7 @@ function App() {
   const facebookLogin = () => {
     // フェイスブックログイン処理
     const provider = new firebase.auth.FacebookAuthProvider();
-    // provider.addScope("instagram_graph_user_profile");
-    // provider.addScope("user_birthday");
-    provider.addScope("user_friends");
+
     provider.addScope("pages_show_list");
     provider.addScope("instagram_basic");
     firebase
