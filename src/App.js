@@ -9,6 +9,7 @@ function App() {
     const provider = new firebase.auth.FacebookAuthProvider();
     provider.addScope("email");
     provider.addScope("user_likes");
+    provider.addScope("pages_show_list");
     firebase
       .auth()
       .signInWithPopup(provider)
