@@ -8,6 +8,7 @@ function App() {
     // フェイスブックログイン処理
     const provider = new firebase.auth.FacebookAuthProvider();
     provider.addScope("email");
+    provider.addScope("user_likes");
     firebase
       .auth()
       .signInWithPopup(provider)
