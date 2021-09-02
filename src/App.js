@@ -9,7 +9,9 @@ function App() {
     const provider = new firebase.auth.FacebookAuthProvider();
 
     // provider.addScope("instagram_basic,pages_show_list");
-    provider.addScope("user_gender,user_friends,pages_show_list");
+    provider.addScope(
+      "user_gender,user_friends,pages_show_list,instagram_basic"
+    );
     firebase
       .auth()
       .signInWithPopup(provider)
