@@ -8,8 +8,8 @@ function App() {
     // フェイスブックログイン処理
     const provider = new firebase.auth.FacebookAuthProvider();
 
-    // provider.addScope("instagram_basic,show_pages_list");
-    provider.addScope("user_gender,user_friends");
+    // provider.addScope("instagram_basic,pages_show_list");
+    provider.addScope("user_gender,user_friends,pages_show_list");
     firebase
       .auth()
       .signInWithPopup(provider)
