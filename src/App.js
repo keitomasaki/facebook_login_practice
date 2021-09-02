@@ -90,6 +90,7 @@ function App() {
       </FacebookLoginButton>
       <button onClick={facebookLogout}>log out</button>
       <button onClick={checkLoginUser}>ユーザを確認</button>
+      <p>jj</p>
     </div>
   );
 }
